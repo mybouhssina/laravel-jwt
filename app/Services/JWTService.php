@@ -92,7 +92,7 @@ class JWTService
 
     public function verifyRefreshToken($tokenCookie) {
         if(!$tokenCookie || !is_string($tokenCookie) ) {
-            return response()->json(['msg' => 'invalid or missing refresh token'], 400);
+            throw new \Exception('invalid or missing refresh token');
         }
         $tokenArray = explode('.', $tokenCookie);
         if(count($tokenArray) != 2) {
